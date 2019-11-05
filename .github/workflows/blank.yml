@@ -14,6 +14,5 @@ jobs:
     - name: Run a multi-line script
       run: |
         git status
-        git branch master
         git checkout master
         git push heroku master
