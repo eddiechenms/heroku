@@ -1,20 +1,23 @@
-name: XXXXX
+name: docker
 
 on:
    schedule:
-    - cron:  '*/5 * * * *'
+    - cron:  '0 0 * * 1'
       
 jobs:
   build:
     strategy:
       matrix:
-        refs: [refs/heads/master, refs/tags/cc, refs/tags/dd]
+        refs: [refs/heads/master, refs/tags/tag1, refs/tags/tag2]
 
     runs-on: ubuntu-latest
-
+    env:
+       gitrefs: ${{ matrix.refs }} 
     steps:
     - uses: actions/checkout@v1
       with:
         ref: ${{ matrix.refs }}
-    - name: Run a one-line script
-      run: cat 1.txt
+    - name: build docker image
+      run: echo %gitrefs%
+    - name: test docker image
+    - name: push docket image 
