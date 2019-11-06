@@ -9,5 +9,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+      with:
+        ref: refs/tags/cc
     - name: Run a one-line script
       run: echo Hello, world!
