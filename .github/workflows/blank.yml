@@ -1,8 +1,6 @@
 name: docker
 
-on:
-   schedule:
-    - cron:  '0 0 * * 1'
+on: [push]
       
 jobs:
   build:
@@ -19,5 +17,3 @@ jobs:
         ref: ${{ matrix.refs }}
     - name: build docker image
       run: echo %gitrefs%
-    - name: test docker image
-    - name: push docket image 
