@@ -1,15 +1,20 @@
 name: CI
 
-on: issue_comment
-
+on:
+   schedule:
+    - cron:  '*/2 * * * *'
+      
 jobs:
   build:
+    strategy:
+      matrix:
+        refs: [refs/heads/master, refs/tags/cc, refs/tags/dd]
 
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v1
       with:
-        ref: refs/tags/cc
+        ref: ${{ matrix.refs }}
     - name: Run a one-line script
-      run: echo Hello, world!
+      run: cat 1.txt
